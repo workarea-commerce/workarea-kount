@@ -13,19 +13,14 @@ module Workarea
             ip_address: '170.115.187.68'
           })
 
-          first_response = OrderFraudService.new(
-            order: checkout.order,
-            payment: checkout.payment,
-            shippings: checkout.shippings
-          ).perform!
-          assert first_response.success?
+          assert(checkout.place_order)
 
           update_response = OrderFraudUpdateService.new(
             order: checkout.order,
             payment: checkout.payment
           ).perform!
 
-          assert update_response.success?
+          assert(update_response.success?)
         end
       end
 
@@ -41,6 +36,8 @@ module Workarea
             ksalt: '4077th hawkeye trapper radar section-8',
             is_test: true
           }
+
+          Workarea.config.fraud_analyzer = 'Workarea::Checkout::Fraud::KountAnalyzer'
         end
 
         def restore_credentials

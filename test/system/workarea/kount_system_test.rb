@@ -21,7 +21,6 @@ module Workarea
       checkout = create_purchasable_checkout
 
       checkout.order.update_attributes!(kount_decision: :decline)
-      assert(checkout.handle_kount_review)
 
       visit admin.root_path
       fill_in 'q', with: checkout.order.id
@@ -46,7 +45,6 @@ module Workarea
       checkout = create_purchasable_checkout
 
       checkout.order.update_attributes!(kount_decision: :decline)
-      assert(checkout.handle_kount_review)
 
       visit admin.order_path checkout.order
 

@@ -1,0 +1,9 @@
+module Workarea
+  class Order
+    decorate FraudDecision do
+      def declined?
+        !decision.in?(%i[approved no_decision])
+      end
+    end
+  end
+end

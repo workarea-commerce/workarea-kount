@@ -1,37 +1,11 @@
 module Workarea
   decorate Storefront::Checkout::PlaceOrderController, with: :kount do
     def try_place_order
-      unless Kount.enabled? && current_checkout.payment.needs_fraud_detection?
-        return super
-      end
-
-      response = fraud_service.perform!
-      current_order.update_attributes!(kount_decision: response.decision)
-
-      case response.decision
-      when :decline
-        failed_order_fraud
-      when :review
-        current_checkout.handle_kount_review ? completed_place_order : incomplete_place_order
-      when :approve
-        super
+      if current_checkout.place_order || current_checkout.handle_kount_review
+        completed_place_order
+      else
+        incomplete_place_order
       end
     end
-
-    def failed_order_fraud
-      flash[:error] = t('workarea.storefront.flash_messages.kount_order_denied')
-      payment
-      render :payment
-    end
-
-    private
-
-      def fraud_service
-        @fraud_service ||= Workarea::Kount::OrderFraudService.new(
-          order: current_checkout.order,
-          payment: current_checkout.payment,
-          shippings: current_checkout.shippings
-        )
-      end
   end
 end

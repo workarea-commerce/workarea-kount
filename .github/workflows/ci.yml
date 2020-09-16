@@ -1,6 +1,8 @@
 name: CI
 on: [push]
-
+env:
+  BUNDLE_GEMS__WORKAREA__COM: ${{ secrets.BUNDLE_GEMS__WORKAREA__COM }}
+  CC_PROCESSOR: moneris
 jobs:
   static_analysis:
     runs-on: ubuntu-latest

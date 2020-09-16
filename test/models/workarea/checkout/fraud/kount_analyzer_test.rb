@@ -1,30 +1,27 @@
 require 'test_helper'
 
 module Workarea
-  module Kount
-    class OrderFraudServiceTest < Workarea::TestCase
-      setup :setup_sandbox_credentials
-      teardown :restore_credentials
+  class Checkout
+    module Fraud
+      class KountAnalyzerTest < Workarea::TestCase
+        setup :setup_sandbox_credentials
+        teardown :restore_credentials
 
-      def test_basic_fraud_test
-        checkout = create_purchasable_checkout(order: {
-          kount_session_id: '12345666',
-          ip_address: '170.115.187.68'
-        })
+        def test_basic_fraud_test
+          checkout = create_purchasable_checkout(order: {
+            kount_session_id: '12345666',
+            ip_address: '170.115.187.68'
+          })
 
-        VCR.use_cassette("kount/basic_fraud_test") do
+          VCR.use_cassette("kount/basic_fraud_test") do
+            analyzer = KountAnalyzer.new(checkout)
+            response = analyzer.decide!
 
-          response = OrderFraudService.new(
-            order: checkout.order,
-            payment: checkout.payment,
-            shippings: checkout.shippings
-          ).perform!
-
-          assert response.success?
+            assert_equal(:approved, response.decision)
+          end
         end
-      end
 
-      private
+        private
 
         def setup_sandbox_credentials
           @_old_credentials = Workarea::Kount.credentials
@@ -41,6 +38,7 @@ module Workarea
         def restore_credentials
           Rails.application.secrets.kount = @_old_credentials
         end
+      end
     end
   end
 end

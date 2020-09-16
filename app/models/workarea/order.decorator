@@ -5,6 +5,8 @@ module Workarea
       field :kount_decision, type: Symbol
 
       scope :not_under_review, -> { where(:kount_decision.ne => :review) }
+
+      before_save :set_kount_decision, if: :fraud_decision?
     end
 
     class_methods do
@@ -44,12 +46,17 @@ module Workarea
       end
     end
 
+    # Whether the FraudDecision#decision is `:review`.
     def under_review?
-      kount_decision == :review
+      !placed? && !canceled? && kount_decision == :review
     end
 
     def abandoned?
       super && kount_decision.nil?
+    end
+
+    def set_kount_decision
+      self.kount_decision = fraud_decision.decision
     end
   end
 end
