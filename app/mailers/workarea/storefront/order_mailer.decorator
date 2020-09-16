@@ -1,0 +1,14 @@
+module Workarea
+  decorate Storefront::OrderMailer, with: :kount do
+    def hold_denial(order_id)
+      order = Order.find(order_id)
+      @order = Storefront::OrderViewModel.new(order)
+      @recommendations = Storefront::EmailRecommendationsViewModel.wrap(order)
+
+      mail(
+        to: @order.email,
+        subject: t('workarea.storefront.email.hold_denial.subject', order_id: @order.id)
+      )
+    end
+  end
+end

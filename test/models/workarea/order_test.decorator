@@ -1,0 +1,25 @@
+module Workarea
+  decorate OrderTest, with: :kount do
+    def test_review_status
+      order = Order.new(
+        email: 'test@workarea.com',
+        created_at: Time.current,
+        kount_decision: :review
+      )
+      order.items.build(product_id: 'PROD', sku: 'SKU1')
+
+      assert_equal(:review, order.status)
+    end
+
+    def test_kount_review_orders_are_not_abandoned
+      order = Order.new(
+        email: 'test@workarea.com',
+        created_at: Time.current - 1.day,
+        kount_decision: :review
+      )
+      order.items.build(product_id: 'PROD', sku: 'SKU1')
+
+      refute(order.abandoned?)
+    end
+  end
+end

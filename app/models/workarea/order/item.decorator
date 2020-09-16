@@ -1,0 +1,8 @@
+module Workarea
+  decorate Order::Item, with: :kount do
+    def unit_price_cents
+      return unless price_adjustments.present?
+      price_adjustments.first.unit.cents.to_f
+    end
+  end
+end

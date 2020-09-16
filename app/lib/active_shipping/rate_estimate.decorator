@@ -1,0 +1,10 @@
+module ActiveShipping
+  decorate RateEstimate, with: :kount do
+    decorated { attr_accessor :kount_code }
+
+    def initialize(origin, destination, carrier, service_name, options = {})
+      super
+      self.kount_code = options[:kount_code]
+    end
+  end
+end

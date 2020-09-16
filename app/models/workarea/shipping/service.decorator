@@ -1,0 +1,9 @@
+module Workarea
+  decorate Shipping::Service, with: :kount do
+    decorated do
+      field :kount_code, type: String, default: 'ST'
+
+      validates :kount_code, inclusion: { in: %w(ST SD 2D ND) }
+    end
+  end
+end

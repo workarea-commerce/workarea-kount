@@ -1,0 +1,13 @@
+module Workarea
+  decorate Payment::SavedCreditCard, Payment::Tender::CreditCard, with: :kount do
+    decorated { field :kount_number, type: String }
+
+    def number=(val)
+      super
+      self.kount_number = Kount::SecurityMash.hash_credit_card(
+        number,
+        Workarea::Kount.ksalt
+      )
+    end
+  end
+end

@@ -1,0 +1,4 @@
+- unless Rails.env.test? || @kount_data_collector_already_appended
+  - @kount_data_collector_already_appended = true
+  %iframe{ width: 1, height: 1, frameborder: 0, scrolling: 'no', style: 'display:none;', src: kount_data_collector_htm_url }
+    %img{ width: 1, height: 1, src: kount_data_collector_gif_url }

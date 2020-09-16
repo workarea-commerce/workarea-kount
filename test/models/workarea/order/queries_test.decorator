@@ -1,0 +1,28 @@
+require 'test_helper'
+
+module Workarea
+  decorate Order::QueriesTest, with: :kount do
+    def test_kount_orders_do_not_need_reminding
+      kount_review = Order.create!(email: email, checkout_started_at: 2.hours.ago, items: [{ product_id: '1', sku: 2 }], kount_decision: :review)
+      kount_decline = Order.create!(email: email, checkout_started_at: 2.hours.ago, items: [{ product_id: '1', sku: 2 }], kount_decision: :decline)
+      results = Order.need_reminding.to_a
+
+      refute_includes(results, kount_review)
+      refute_includes(results, kount_decline)
+    end
+
+    def test_find_current_by_id_excludes_orders_under_review
+      order = create_order(kount_decision: :review)
+
+      result = Order.find_current(id: order.id)
+      refute result.persisted?
+    end
+
+    def test_find_current_by_user_id_excludes_orders_under_review
+      _order = create_order(user_id: 'foo', kount_decision: :review)
+
+      result = Order.find_current(user_id: 'foo')
+      refute result.persisted?
+    end
+  end
+end

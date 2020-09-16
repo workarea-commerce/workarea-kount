@@ -1,0 +1,11 @@
+module Workarea
+  decorate Payment, with: :kount do
+    def needs_fraud_detection?
+      credit_card? || (Workarea::Plugin.installed?('Paypal') && paypal?)
+    end
+
+    def uses_credit_card?
+      credit_card? && credit_card.has_amount?
+    end
+  end
+end

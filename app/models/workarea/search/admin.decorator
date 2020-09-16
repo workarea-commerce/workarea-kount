@@ -1,0 +1,12 @@
+module Workarea
+  decorate Search::Admin, with: :kount do
+    class_methods do
+      # The core code will try to use Workarea::Search::Admin::Order to index
+      # the Workarea::Kount::Order model, guard against it
+      def for(model)
+        return if model.class.to_s === "Workarea::Kount::Order"
+        super
+      end
+    end
+  end
+end

@@ -1,0 +1,46 @@
+- @page_title = t('workarea.admin.orders.kount.title', name: @order.name)
+
+.view
+  .view__header
+    .grid.grid--middle.grid--right
+      .grid__cell.grid__cell--50
+        .view__heading
+          = link_to_index_for(@order)
+          %h1= link_to @order.name, url_for(@order)
+      .grid__cell.grid__cell--25
+        = render_aux_navigation_for(@order)
+
+  .view__container
+    = render_cards_for(@order, :flow)
+
+  .view__container.view__container--narrow
+    .grid
+      .grid__cell.grid__cell--50
+        %h2= t('workarea.admin.orders.kount.rules_triggered')
+        - if @order.kount_rules.present?
+          %ul.list-reset
+            - @order.kount_rules.each do |rule|
+              %li= rule[:rule_description]
+        - else
+          %span= t('workarea.admin.orders.kount.no_rules_triggered')
+      .grid__cell.grid__cell--50
+        %ul.list-reset
+          %li
+            %strong= t('workarea.admin.orders.cards.kount.decision')
+            #{@order.kount_decision.to_s}
+          %li
+            %strong= t('workarea.admin.orders.cards.kount.score')
+            #{@order.kount_score}
+          %li
+            %strong= t('workarea.admin.orders.cards.kount.credit_cards')
+            #{@order.kount_credit_cards}
+          %li
+            %strong= t('workarea.admin.orders.cards.kount.email_addresses')
+            #{@order.kount_email_addresses}
+          %li
+            %strong= t('workarea.admin.orders.cards.kount.devices')
+            #{@order.kount_devices}
+
+      .workflow-bar
+        .grid.grid--auto.grid--right.grid--middle
+          .grid__cell= link_to t('workarea.admin.orders.kount.view_order_in_kount'), @order.kount_order_url, target: :_blank, class: 'workflow-bar__button'

@@ -1,0 +1,35 @@
+module Workarea
+  decorate Admin::OrderViewModel, with: :kount do
+    def kount_order
+      @kount_order ||= Workarea::Kount::Order.find model.id rescue nil
+    end
+
+    def kount_order_success?
+      kount_order&.response&.success?
+    end
+
+    def kount_score
+      kount_order&.response&.score
+    end
+
+    def kount_credit_cards
+      kount_order&.response&.credit_cards
+    end
+
+    def kount_email_addresses
+      kount_order&.response&.email_addresses
+    end
+
+    def kount_devices
+      kount_order&.response&.devices
+    end
+
+    def kount_rules
+      kount_order&.response&.triggered_rules
+    end
+
+    def kount_order_url
+      "#{Kount.kount_order_url_base}#{kount_order.response.transaction_id}"
+    end
+  end
+end

@@ -1,0 +1,28 @@
+- if order.kount_order_success?
+  .grid__cell
+    .card{ class: card_classes(:kount, local_assigns[:active]) }
+      = link_to kount_order_path(order), class: 'card__header' do
+        %span.card__header-text= t('workarea.admin.orders.cards.kount.title')
+        = inline_svg 'workarea/admin/icons/link.svg', class: 'card__icon'
+
+      - if local_assigns[:active].blank?
+        .card__body
+          %ul.list-reset
+            %li
+              %strong= t('workarea.admin.orders.cards.kount.decision')
+              #{order.kount_decision.to_s}
+            %li
+              %strong= t('workarea.admin.orders.cards.kount.score')
+              #{order.kount_score}
+            %li
+              %strong= t('workarea.admin.orders.cards.kount.credit_cards')
+              #{order.kount_credit_cards}
+            %li
+              %strong= t('workarea.admin.orders.cards.kount.email_addresses')
+              #{order.kount_email_addresses}
+            %li
+              %strong= t('workarea.admin.orders.cards.kount.devices')
+              #{order.kount_devices}
+
+          = link_to kount_order_path(order), class: 'card__button' do
+            %span.button.button--small= t('workarea.admin.orders.cards.kount.button')

@@ -1,0 +1,21 @@
+module Workarea
+  decorate CheckoutTest, with: :kount do
+    def test_handle_kount_review_fails_if_inventory_fails
+      checkout = Checkout.new(@order)
+
+      checkout.expects(:complete?).returns(true)
+      checkout.expects(:shippable?).returns(true)
+      checkout.expects(:payable?).returns(true)
+      checkout.inventory.expects(:captured?).returns(false)
+
+      refute(checkout.handle_kount_review)
+    end
+
+    def test_handle_kount_review_tokenizes_the_card
+      checkout = create_purchasable_checkout
+
+      assert(checkout.handle_kount_review)
+      assert(checkout.payment.credit_card.present?)
+    end
+  end
+end

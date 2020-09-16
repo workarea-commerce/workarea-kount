@@ -1,0 +1,10 @@
+module Workarea
+  decorate Payment::Tender::CreditCard, with: :kount_tender do
+    private
+
+      def set_saved_card_values
+        super
+        self.kount_number = saved_card.kount_number if saved_card.present?
+      end
+  end
+end

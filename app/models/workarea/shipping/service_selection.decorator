@@ -1,0 +1,7 @@
+module Workarea
+  decorate Shipping::ServiceSelection, with: :kount do
+    decorated do
+      field :kount_code, type: String
+    end
+  end
+end

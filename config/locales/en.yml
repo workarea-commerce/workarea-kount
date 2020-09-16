@@ -1,0 +1,26 @@
+en:
+  workarea:
+    admin:
+      orders:
+        cards:
+          kount:
+            button: View Kount Details
+            credit_cards: Cards
+            decision: Decision
+            devices: Devices
+            email_addresses: Email Addresses
+            score: Score
+            title: Kount
+        kount:
+          title: Kount
+          rules_triggered: Rules Triggered
+          no_rules_triggered: No rules triggered
+          view_order_in_kount: View Order in Kount
+    storefront:
+      email:
+        hold_denial:
+          heading: Order %{order_id} Cancellation
+          info_html: Apologies, but your order could not be processed due to a payment issue.
+          subject: Order %{order_id} Cancellation
+      flash_messages:
+        kount_order_denied: We are unable to process your payment at this time. Please contact your credit card issuer or bank or try re-entering your information.

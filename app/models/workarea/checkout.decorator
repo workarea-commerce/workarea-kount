@@ -1,0 +1,36 @@
+module Workarea
+  decorate Checkout, with: :kount do
+    def handle_kount_review
+      return false unless complete?
+      return false unless shippable?
+      return false unless payable?
+
+      inventory.purchase
+      return false unless inventory.captured?
+
+      return true unless payment.uses_credit_card?
+      store_credit_card
+    end
+
+    def handle_kount_approved
+      unless payment_collection.purchase
+        captured_inventory&.rollback
+        return false
+      end
+
+      result = order.place
+      place_order_side_effects if result
+      result
+    end
+
+    private
+
+      def captured_inventory
+        @captured_inventory ||= Inventory::Transaction.captured_for_order(order.id)
+      end
+
+      def store_credit_card
+        Payment::StoreCreditCard.new(payment.credit_card).save!
+      end
+  end
+end

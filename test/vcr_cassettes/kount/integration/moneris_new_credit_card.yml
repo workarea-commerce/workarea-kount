@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://risk.test.kount.net/
+    body:
+      encoding: UTF-8
+      string: MACK=Y&AUTH=A&SESS=12345666&MODE=Q&SITE=DEFAULT&S2A1=22+S.+3rd+St.&S2A2=Second+Floor&S2CI=Philadelphia&S2ST=PA&S2PC=19106&S2CC=US&S2PN&B2A1=22+S.+3rd+St.&B2A2=Second+Floor&B2CI=Philadelphia&B2ST=PA&B2PC=19106&B2CC=US&B2PN&PTYP=CARD&PTOK=411111WMS5YA6FUZA1KC&PENC=KHASH&SHTP=ST&TOTL=1100&CURR=USD&EMAL=bcrouse-new%40workarea.com&NAME=Ben+Crouse&IPAD=170.115.187.68&ORDR=32150A2B30&PROD_TYPE[]=Test+Product&PROD_DESC[]=Test+Product+-+&PROD_ITEM[]=SKU&PROD_PRICE[]=500&PROD_QUANT[]=2&VERS=0630&MERC=200755&FRMT=JSON
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.4.4p296
+      X-Kount-Api-Key:
+      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMDA3NTUiLCJhdWQiOiJLb3VudC4xIiwiaWF0IjoxNTAwNDA3NTE1LCJzY3AiOnsia2EiOm51bGwsImtjIjpudWxsLCJhcGkiOnRydWUsInJpcyI6dHJ1ZX19.1YwTR1G8qBQ_TDK8MBYxDB2EhpUD0IlwWdvqHVOnm0o
+      Content-Length:
+      - '512'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 May 2019 17:38:07 GMT
+      Server:
+      - NotSet
+      Strict-Transport-Security:
+      - max-age=31536000; preload
+      Cache-Control:
+      - no-store, no-cache
+      Content-Length:
+      - '941'
+      Content-Type:
+      - text/plain;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"VERS":"0630","MODE":"Q","TRAN":"70SG005K3W44","MERC":"200755","SESS":"12345666","ORDR":"32150A2B30","AUTO":"A","SCOR":"34","GEOX":"US","BRND":"VISA","REGN":"US_PA","NETW":"N","KAPT":"N","CARDS":"1","DEVICES":"1","EMAILS":"1","VELO":"0","VMAX":"0","SITE":"DEFAULT","DEVICE_LAYERS":"....","FINGERPRINT":null,"TIMEZONE":null,"LOCALTIME":"
+        ","REGION":null,"COUNTRY":null,"PROXY":null,"JAVASCRIPT":null,"FLASH":null,"COOKIES":null,"HTTP_COUNTRY":null,"LANGUAGE":null,"MOBILE_DEVICE":null,"MOBILE_TYPE":null,"MOBILE_FORWARDER":null,"VOICE_DEVICE":null,"PC_REMOTE":null,"RULES_TRIGGERED":0,"COUNTERS_TRIGGERED":0,"REASON_CODE":null,"MASTERCARD":"","DDFS":null,"DSR":null,"UAS":null,"BROWSER":null,"OS":null,"PIP_IPAD":null,"PIP_LAT":null,"PIP_LON":null,"PIP_COUNTRY":null,"PIP_REGION":null,"PIP_CITY":null,"PIP_ORG":null,"IP_IPAD":null,"IP_LAT":null,"IP_LON":null,"IP_COUNTRY":null,"IP_REGION":null,"IP_CITY":null,"IP_ORG":null,"WARNING_COUNT":0}'
+    http_version: 
+  recorded_at: Tue, 21 May 2019 17:38:07 GMT
+recorded_with: VCR 2.9.3
