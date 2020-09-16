@@ -11,3 +11,4 @@ test/dummy/public/system
 .DS_STORE
 coverage
 .byebug_history
+.rubocop-http*

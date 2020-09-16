@@ -25,13 +25,13 @@ module Workarea
 
       def to_hash
         {
-          :"#{prefix}2A1" => @address.street,
-          :"#{prefix}2A2" => @address.street_2,
-          :"#{prefix}2CI" => @address.city,
-          :"#{prefix}2ST" => @address.region,
-          :"#{prefix}2PC" => @address.postal_code,
-          :"#{prefix}2CC" => @address.country.gec,
-          :"#{prefix}2PN" => @address.phone_number
+          "#{prefix}2A1": @address.street,
+          "#{prefix}2A2": @address.street_2,
+          "#{prefix}2CI": @address.city,
+          "#{prefix}2ST": @address.region,
+          "#{prefix}2PC": @address.postal_code,
+          "#{prefix}2CC": @address.country.gec,
+          "#{prefix}2PN": @address.phone_number
         }
       end
     end
