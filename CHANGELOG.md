@@ -20,11 +20,6 @@ Workarea Kount 3.3.0 (2020-09-25)
 
     Tom Scott
 
-*   Update linter configuration and run RuboCop with auto corrections
-
-
-    Tom Scott
-
 
 
 Workarea Kount 3.2.3 (2019-09-17)
