@@ -1,3 +1,32 @@
+Workarea Kount 3.3.0 (2020-09-25)
+--------------------------------------------------------------------------------
+
+*   Refactor To Use Fraud Decision Framework
+
+    Workarea v3.5 introduced a new "fraud decision" API that allows any
+    integration plugin to consistently provide information on fraudulent
+    orders. To take advantage of this API, the Kount plugin renamed its
+    `Kount::OrderFraudService` to `Checkout::Fraud::KountAnalyzer` and now
+    configures this analyzer by default when installing the plugin. This
+    way, after installing and configuring the Kount plugin, you will
+    automatically link Kount in with the rest of the fraud decision
+    framework that is built in core. This commit also takes care of the test
+    suite as there were a number of failures when combining with other
+    plugins.
+
+    KOUNT-2
+    KOUNT-3
+    Fixes #1
+
+    Tom Scott
+
+*   Update linter configuration and run RuboCop with auto corrections
+
+
+    Tom Scott
+
+
+
 Workarea Kount 3.2.3 (2019-09-17)
 --------------------------------------------------------------------------------
 
