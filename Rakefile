@@ -36,7 +36,7 @@ require 'workarea/kount/version'
 
 desc "Release version #{Workarea::Kount::VERSION} of the gem"
 task :release do
-  host = "https://#{ENV['BUNDLE_GEMS__WEBLINC__COM']}@gems.weblinc.com"
+  host = "https://#{ENV['BUNDLE_GEMS__WORKAREA__COM']}@gems.workarea.com"
 
   Rake::Task['workarea:changelog'].execute
   system 'git add CHANGELOG.md'
@@ -47,6 +47,7 @@ task :release do
   system 'git push --tags'
 
   system 'gem build workarea-kount.gemspec'
+  system "gem push workarea-kount-#{Workarea::Kount::VERSION}.gem"
   system "gem push workarea-kount-#{Workarea::Kount::VERSION}.gem --host #{host}"
   system "rm workarea-kount-#{Workarea::Kount::VERSION}.gem"
 end
