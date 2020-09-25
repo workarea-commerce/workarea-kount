@@ -12,6 +12,6 @@ Gem::Specification.new do |s|
   s.description = 'Kount’s award-winning anti-fraud technology. Boost Sales, Beat Fraud with Kount.'
   s.files       = `git ls-files`.split("\n")
 
-  s.add_dependency 'workarea',    '~> 3.x', ">= 3.1"
+  s.add_dependency 'workarea',    '~> 3.x', ">= 3.5"
   s.add_dependency 'rest-client', '~> 2.0'
 end
