@@ -5,8 +5,10 @@ module Workarea
     class KountLoggedInCheckoutSystemTest < Workarea::SystemTest
       include Storefront::SystemTest
 
-      def test_review_orders_are_still_in_cart
+      def test_review_orders_are_not_still_in_cart
         # setup
+        Workarea.config.fraud_analyzer =
+          'Workarea::Checkout::Fraud::KountAnalyzer'
         email = 'review@workarea.com'
         create_supporting_data email: email
         add_product_to_cart
@@ -16,10 +18,10 @@ module Workarea
         click_button t('workarea.storefront.checkouts.place_order')
         assert_current_path(storefront.checkout_confirmation_path)
         assert(page.has_content?('Success'))
+        assert_equal(:review, Order.first.status)
 
         visit storefront.cart_path
 
-        assert_equal(Order.first.status, :review)
         assert(page.has_no_content?('Integration Product'))
       end
 

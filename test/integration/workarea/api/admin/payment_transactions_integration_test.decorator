@@ -1,0 +1,29 @@
+require 'test_helper'
+
+module Workarea
+  if Plugin.installed?(:api)
+    module Api
+      module Admin
+        decorate PaymentTransactionsIntegrationTest, with: :kount do
+          def create_transaction
+            order = create_order
+            payment = create_payment(id: order.id)
+            payment.set_credit_card(
+              number: '1',
+              month: 1,
+              year: Time.now.year + 1,
+              cvv: '999'
+            )
+
+            Payment::Transaction.create!(
+              payment: payment,
+              tender_id: payment.credit_card.id,
+              amount: 45,
+              action: 'authorize'
+            )
+          end
+        end
+      end
+    end
+  end
+end

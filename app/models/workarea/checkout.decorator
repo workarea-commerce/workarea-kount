@@ -1,6 +1,7 @@
 module Workarea
   decorate Checkout, with: :kount do
     def handle_kount_review
+      return false unless order.under_review?
       return false unless complete?
       return false unless shippable?
       return false unless payable?

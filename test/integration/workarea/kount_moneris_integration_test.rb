@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Workarea
-  if Workarea::Plugin.installed?(:moneris)
+  if Plugin.installed?(:moneris)
     class KountMonerisIntegrationTest < Workarea::TestCase
       include KountApiConfig
       include MonerisGatewayVCRConfig
@@ -13,13 +13,8 @@ module Workarea
             ip_address: '170.115.187.68'
           })
 
-          response = Kount::OrderFraudService.new(
-            order: checkout.order,
-            payment: checkout.payment,
-            shippings: checkout.shippings
-          ).perform!
-
-          assert response.success?
+          assert(checkout.place_order)
+          refute(checkout.order.fraud_suspected_at?)
         end
       end
 
@@ -33,13 +28,8 @@ module Workarea
             payment: "saved_card"
           )
 
-          response = Kount::OrderFraudService.new(
-            order: checkout.order,
-            payment: checkout.payment,
-            shippings: checkout.shippings
-          ).perform!
-
-          assert response.success?
+          assert(checkout.place_order)
+          refute(checkout.order.fraud_suspected_at?)
         end
       end
     end

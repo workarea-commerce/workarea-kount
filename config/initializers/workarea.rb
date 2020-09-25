@@ -19,4 +19,8 @@ Workarea.configure do |config|
     kount_review: 'pending',
     kount_declined: 'danger',
   )
+
+  unless Rails.env.test?
+    config.fraud_analyzer = 'Workarea::Checkout::Fraud::KountAnalyzer'
+  end
 end

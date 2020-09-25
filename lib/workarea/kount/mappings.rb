@@ -73,10 +73,10 @@ module Workarea
       }.freeze
 
       AUTO_MAPPING = {
-        'D' => :decline,
+        'D' => :declined,
         'R' => :review,
         'E' => :manager_review,
-        'A' => :approve
+        'A' => :approved
       }.freeze
 
       # Public: A hash that maps Kount response key names to readable Ruby symbols

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://esqa.moneris.com/gateway2/servlet/MpgRequest
     body:
       encoding: UTF-8
-      string: "<request><store_id>monca02501</store_id><api_token>YSI4CKbdvgSbr6is4JMZ</api_token><res_add_cc><pan>4111111111111111</pan><expdate>2001</expdate><crypt_type>7</crypt_type></res_add_cc></request>"
+      string: "<request><store_id>monca02501</store_id><api_token>YSI4CKbdvgSbr6is4JMZ</api_token><res_add_cc><pan>4111111111111111</pan><expdate>2101</expdate><crypt_type>7</crypt_type></res_add_cc></request>"
     headers:
       Content-Type:
       - application/x-www-form-urlencoded
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 21 May 2019 17:39:02 GMT
+      - Mon, 21 Sep 2020 18:36:55 GMT
       X-Ua-Compatible:
       - IE=Edge
       Connection:
@@ -31,56 +31,54 @@ http_interactions:
       Content-Type:
       - text/html
       Set-Cookie:
-      - TS019df888=015d06d254382a47e43b3d3cba832b7c3404132ad818a47d91e4e75f7304bf8860ea954123e782d71994a6ef6d93184930d043b565;
-        Path=/; Domain=.esqa.moneris.com
+      - TS019df888=015d06d254a632752c749840557162f63baf7d0861476031f3a8e57658bdc65a7e4ed402703d8960f9e921a20a172ce1b78bc9e8f0;
+        Path=/; Domain=.esqa.moneris.com; Secure
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: <?xml version="1.0"?><response><receipt><DataKey>Lm3qV02TClRYaUt3IaQLacOF1</DataKey><ReceiptId>null</ReceiptId><ReferenceNum>null</ReferenceNum><ResponseCode>001</ResponseCode><ISO>null</ISO><AuthCode>null</AuthCode><Message>Successfully
-        registered CC details.</Message><TransTime>13:39:03</TransTime><TransDate>2019-05-21</TransDate><TransType>null</TransType><Complete>true</Complete><TransAmount>null</TransAmount><CardType>null</CardType><TransID>null</TransID><TimedOut>false</TimedOut><CorporateCard>null</CorporateCard><RecurSuccess>null</RecurSuccess><AvsResultCode>null</AvsResultCode><CvdResultCode>null</CvdResultCode><ResSuccess>true</ResSuccess><PaymentType>cc</PaymentType><IsVisaDebit>null</IsVisaDebit><ResolveData><cust_id></cust_id><phone></phone><email></email><note></note><avs_street_number></avs_street_number><avs_street_name></avs_street_name><avs_zipcode></avs_zipcode><masked_pan>4111***1111</masked_pan><expdate>2001</expdate><crypt_type>7</crypt_type></ResolveData></receipt></response>
-    http_version: 
-  recorded_at: Tue, 21 May 2019 17:39:33 GMT
+      string: <?xml version="1.0"?><response><receipt><DataKey>890xonL55b8sZrm5TqqoT1Tr1</DataKey><ReceiptId>null</ReceiptId><ReferenceNum>null</ReferenceNum><ResponseCode>001</ResponseCode><ISO>null</ISO><AuthCode>null</AuthCode><Message>Successfully
+        registered CC details.</Message><TransTime>14:36:55</TransTime><TransDate>2020-09-21</TransDate><TransType>null</TransType><Complete>true</Complete><TransAmount>null</TransAmount><CardType>null</CardType><TransID>null</TransID><TimedOut>false</TimedOut><CorporateCard>null</CorporateCard><RecurSuccess>null</RecurSuccess><AvsResultCode>null</AvsResultCode><CvdResultCode>null</CvdResultCode><ResSuccess>true</ResSuccess><PaymentType>cc</PaymentType><IsVisaDebit>null</IsVisaDebit><ResolveData><cust_id></cust_id><phone></phone><email></email><note></note><avs_street_number></avs_street_number><avs_street_name></avs_street_name><avs_zipcode></avs_zipcode><masked_pan>4111***1111</masked_pan><expdate>2101</expdate><crypt_type>7</crypt_type></ResolveData></receipt></response>
+    http_version:
+  recorded_at: Mon, 21 Sep 2020 18:36:55 GMT
 - request:
     method: post
-    uri: https://risk.test.kount.net/
+    uri: https://esqa.moneris.com/gateway2/servlet/MpgRequest
     body:
       encoding: UTF-8
-      string: MACK=Y&AUTH=A&SESS=12345666&MODE=Q&SITE=DEFAULT&S2A1=22+S.+3rd+St.&S2A2=Second+Floor&S2CI=Philadelphia&S2ST=PA&S2PC=19106&S2CC=US&S2PN&B2A1=22+S.+3rd+St.&B2A2=Second+Floor&B2CI=Philadelphia&B2ST=PA&B2PC=19106&B2CC=US&B2PN&PTYP=TOKEN&PTOK=Lm3qV0R1E8YZAFK8LWPE&PENC=KHASH&SHTP=ST&TOTL=1100&CURR=USD&EMAL=bcrouse-new%40workarea.com&NAME=Ben+Crouse&IPAD=170.115.187.68&ORDR=2A33A662D5&PROD_TYPE[]=Test+Product&PROD_DESC[]=Test+Product+-+&PROD_ITEM[]=SKU&PROD_PRICE[]=500&PROD_QUANT[]=2&VERS=0630&MERC=200755&FRMT=JSON
+      string: "<request><store_id>monca02501</store_id><api_token>YSI4CKbdvgSbr6is4JMZ</api_token><res_preauth_cc><data_key>890xonL55b8sZrm5TqqoT1Tr1</data_key><order_id>CF60471F69_2020_09_21_14_36_57</order_id><amount>11.00</amount><crypt_type>7</crypt_type></res_preauth_cc></request>"
     headers:
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.4.4p296
-      X-Kount-Api-Key:
-      - eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyMDA3NTUiLCJhdWQiOiJLb3VudC4xIiwiaWF0IjoxNTAwNDA3NTE1LCJzY3AiOnsia2EiOm51bGwsImtjIjpudWxsLCJhcGkiOnRydWUsInJpcyI6dHJ1ZX19.1YwTR1G8qBQ_TDK8MBYxDB2EhpUD0IlwWdvqHVOnm0o
-      Content-Length:
-      - '513'
       Content-Type:
       - application/x-www-form-urlencoded
+      Connection:
+      - close
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Tue, 21 May 2019 17:39:35 GMT
-      Server:
-      - NotSet
-      Strict-Transport-Security:
-      - max-age=31536000; preload
-      Cache-Control:
-      - no-store, no-cache
-      Content-Length:
-      - '942'
+      - Mon, 21 Sep 2020 18:36:57 GMT
+      X-Ua-Compatible:
+      - IE=Edge
+      Connection:
+      - close
       Content-Type:
-      - text/plain;charset=UTF-8
+      - text/html
+      Set-Cookie:
+      - TS019df888=015d06d254b203887d231a7ac51a1b2445052a677fda5bf375851a2912d0d63f45e46b044740d1e4edd8f7455955dad77b9ee01035;
+        Path=/; Domain=.esqa.moneris.com; Secure
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"VERS":"0630","MODE":"Q","TRAN":"70SG0QHT2NKL","MERC":"200755","SESS":"12345666","ORDR":"2A33A662D5","AUTO":"A","SCOR":"29","GEOX":"US","BRND":"TOKEN","REGN":"US_PA","NETW":"N","KAPT":"N","CARDS":"1","DEVICES":"1","EMAILS":"1","VELO":"0","VMAX":"0","SITE":"DEFAULT","DEVICE_LAYERS":"....","FINGERPRINT":null,"TIMEZONE":null,"LOCALTIME":"
-        ","REGION":null,"COUNTRY":null,"PROXY":null,"JAVASCRIPT":null,"FLASH":null,"COOKIES":null,"HTTP_COUNTRY":null,"LANGUAGE":null,"MOBILE_DEVICE":null,"MOBILE_TYPE":null,"MOBILE_FORWARDER":null,"VOICE_DEVICE":null,"PC_REMOTE":null,"RULES_TRIGGERED":0,"COUNTERS_TRIGGERED":0,"REASON_CODE":null,"MASTERCARD":"","DDFS":null,"DSR":null,"UAS":null,"BROWSER":null,"OS":null,"PIP_IPAD":null,"PIP_LAT":null,"PIP_LON":null,"PIP_COUNTRY":null,"PIP_REGION":null,"PIP_CITY":null,"PIP_ORG":null,"IP_IPAD":null,"IP_LAT":null,"IP_LON":null,"IP_COUNTRY":null,"IP_REGION":null,"IP_CITY":null,"IP_ORG":null,"WARNING_COUNT":0}'
-    http_version: 
-  recorded_at: Tue, 21 May 2019 17:39:35 GMT
+      string: <?xml version="1.0"?><response><receipt><DataKey>890xonL55b8sZrm5TqqoT1Tr1</DataKey><ReceiptId>CF60471F69_2020_09_21_14_36_57</ReceiptId><ReferenceNum>660189810010090020</ReferenceNum><ResponseCode>027</ResponseCode><ISO>01</ISO><AuthCode>628516</AuthCode><Message>APPROVED           *                    =</Message><TransTime>14:36:57</TransTime><TransDate>2020-09-21</TransDate><TransType>01</TransType><Complete>true</Complete><TransAmount>11.00</TransAmount><CardType>V</CardType><TransID>160-0_15</TransID><TimedOut>false</TimedOut><CorporateCard>false</CorporateCard><RecurSuccess>null</RecurSuccess><AvsResultCode>null</AvsResultCode><CvdResultCode>null</CvdResultCode><ResSuccess>true</ResSuccess><PaymentType>cc</PaymentType><IsVisaDebit>false</IsVisaDebit><ResolveData><cust_id></cust_id><phone></phone><email></email><note></note><expdate>2101</expdate><masked_pan>4111***1111</masked_pan><crypt_type>7</crypt_type><avs_street_number></avs_street_number><avs_street_name></avs_street_name><avs_zipcode></avs_zipcode></ResolveData></receipt></response>
+    http_version:
+  recorded_at: Mon, 21 Sep 2020 18:36:58 GMT
 recorded_with: VCR 2.9.3

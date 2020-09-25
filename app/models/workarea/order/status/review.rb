@@ -5,7 +5,7 @@ module Workarea
         include StatusCalculator::Status
 
         def in_status?
-          !order.placed? && order.under_review? && !order.canceled?
+          order.under_review?
         end
       end
     end
