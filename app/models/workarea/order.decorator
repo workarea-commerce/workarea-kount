@@ -34,13 +34,13 @@ module Workarea
       # @return [Order]
       #
       def find_current(params = {})
-        if params[:id].present?
-          Order.not_placed.not_under_review.find(params[:id].to_s)
-        elsif params[:user_id].present?
-          Order.recently_updated.not_placed.not_under_review.find_by(params.slice(:user_id))
-        else
-          Order.new(user_id: params[:user_id])
-        end
+        order = super
+
+        return order unless order.under_review?
+
+        Order.recently_updated.not_placed.not_under_review.find_by(
+          params.compact.slice(:id, :user_id)
+        )
       rescue Mongoid::Errors::DocumentNotFound
         Order.new(user_id: params[:user_id])
       end
