@@ -3,6 +3,7 @@ on: [push]
 env:
   BUNDLE_GEMS__WORKAREA__COM: ${{ secrets.BUNDLE_GEMS__WORKAREA__COM }}
   CC_PROCESSOR: moneris
+  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 jobs:
   static_analysis:
     runs-on: ubuntu-latest

@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "git@github.com:#{repo}.git" }
+git_source(:github) do |repo|
+  if !ENV['ACCESS_TOKEN'].nil?
+    "https://#{ENV['ACCESS_TOKEN']}@github.com/#{repo}.git"
+  else
+    "https://github.com/#{repo}.git"
+  end
+end
 
 gemspec
 
