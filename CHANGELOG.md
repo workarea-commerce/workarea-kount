@@ -1,3 +1,15 @@
+Workarea Kount 3.3.1 (2020-12-02)
+--------------------------------------------------------------------------------
+
+*   Improve current order decoration for compatibility with other plugins
+
+    Using `super` ensures other decorations to this method will still
+    be incorporated.
+
+    Ben Crouse
+
+
+
 Workarea Kount 3.3.0 (2020-09-25)
 --------------------------------------------------------------------------------
 
